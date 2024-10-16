@@ -5,5 +5,8 @@
   "main": "index.ts",
   "repository": "git@github.com:MarceloZapatta/worcli.git",
   "author": "Marcelo Zapatta <marcelozapatta0@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "inquirer": "^11.1.0"
+  }
 }

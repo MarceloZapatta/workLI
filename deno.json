@@ -8,6 +8,7 @@
     ]
   },
   "tasks": {
-    "start": "deno run --allow-read --allow-write --allow-run index.ts"
+    "start": "deno run --allow-read --allow-write --allow-run --allow-env index.ts",
+    "build": "deno compile -o dist/workli --allow-read --allow-write --allow-run --allow-env index.ts"
   }
 }

@@ -1,6 +1,6 @@
 import { green, red } from 'https://deno.land/std@0.205.0/fmt/colors.ts';
 import { folderExists, fileExists, updateEnvFile } from '../helpers/helpers.ts';
-import { config } from 'https://deno.land/x/dotenv/mod.ts';
+import { config } from "https://deno.land/x/dotenv@v3.2.2/mod.ts";
 import EnviromentNotFound from '../exceptions/enviroment-not-found.ts';
 
 export default class EnviromentService {

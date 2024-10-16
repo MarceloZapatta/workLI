@@ -3,14 +3,17 @@ import { currentEnviroment, helpDocumentation } from './help-documentation.ts';
 import EnviromentService from './services/enviroment-service.ts';
 import EnviromentNotFound from './exceptions/enviroment-not-found.ts';
 import ProjectService from './services/project-service.ts';
+import AutomatorService from "./services/automator-service.ts";
 
 export default class App {
   enviromentService: EnviromentService;
   projectService: ProjectService;
+  automatorService: AutomatorService;
 
   constructor() {
     this.enviromentService = new EnviromentService();
     this.projectService = new ProjectService();
+    this.automatorService = new AutomatorService();
   }
 
   async showHelpDocs() {
@@ -40,6 +43,9 @@ export default class App {
           break;
         case 'enviroment:activate':
           await this.enviromentService.setCurrentEnviroment(args[1]);
+          break;
+        case 'automator:test':
+          await this.automatorService.index();
           break;
         default:
           this.showCommandNotFound(arg);

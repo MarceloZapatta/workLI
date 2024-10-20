@@ -14,7 +14,7 @@ export async function helpDocumentation() {
 }
 
 async function getCurrentVersion() {
-  const packageJson = await Deno.readTextFile("./package.json");
+  const packageJson = await Deno.readTextFile("./deno.json");
   const parsed = JSON.parse(packageJson);
   return parsed.version;
 }

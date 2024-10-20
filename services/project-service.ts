@@ -4,6 +4,7 @@ import EnviromentService from "./enviroment-service.ts";
 
 export default class ProjectService {
   enviromentService: EnviromentService;
+  projectFolder?: string;
 
   constructor () {
     this.enviromentService = new EnviromentService();
@@ -15,19 +16,27 @@ export default class ProjectService {
   public async createNewProject(name: string) {
     await this.createProjectFolder(name);
     this.createRunFile(name);
+
     console.log(`${green('Project succesfully created!')}`);
+
+    return this.projectFolder;
   }
 
   /**
    * Create if not exists the project folder
    */
   private async createProjectFolder(name: string): Promise<boolean> {
-    if (await folderExists(`./enviroments/${this.enviromentService.getCurrentEnviroment()}/${name}`)) {
+    const projectFolder = `./enviroments/${this.enviromentService.getCurrentEnviroment()}/${name}`;
+
+    if (await folderExists(projectFolder)) {
       console.error(`Project [${red(name)}] already exists!`);
       return Deno.exit(0)
     }
     
-    await Deno.mkdir(`./enviroments/${this.enviromentService.getCurrentEnviroment()}/${name}`);
+    await Deno.mkdir(projectFolder);
+
+    this.projectFolder = projectFolder;
+
     return true;
   }
 
@@ -45,7 +54,7 @@ export default class ProjectService {
     return true;
   }
 
-  async run(name: string) {
+  run(name: string) {
     const filePath = `./enviroments/${this.enviromentService.getCurrentEnviroment()}/${name}/run.sh`;
 
     console.log('to aqqq');

@@ -6,5 +6,6 @@ Host=$2
 Port=$3
 
 cd ~/${ProjectPath}
+git pull
 composer install
-php artisan serve --host=$2 --port=$3
+php artisan serve --host=${Host} --port=${Port}

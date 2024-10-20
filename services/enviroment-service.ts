@@ -95,7 +95,7 @@ export default class EnviromentService {
 
     try {
       await Deno.writeTextFile(`./${filePath}`, envContent);
-    } catch (error) {
+    } catch (_error) {
       console.error('Error creating enviroment config file');
     }
 

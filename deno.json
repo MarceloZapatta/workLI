@@ -1,5 +1,13 @@
 {
+  "name": "@zapatta/workli",
   "version": "0.0.1",
+  "description": "Superfast your productivity",
+  "repository": "git@github.com:MarceloZapatta/worcli.git",
+  "author": "Marcelo Zapatta <marcelozapatta0@gmail.com>",
+  "license": "MIT",
+  "exports": {
+    "./": "./index.ts"
+  },
   "compilerOptions": {
     "lib": ["deno.ns", "dom"]
   },

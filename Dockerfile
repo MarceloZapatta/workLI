@@ -9,8 +9,3 @@ COPY . .
 
 # Cache dependencies by creating a layer with the dependencies only
 RUN deno cache index.ts
-
-# Set necessary permissions if your Deno script needs them, e.g., file access or network
-# Example: Set network access and read/write permissions
-ENTRYPOINT ["deno", "run", "--allow-net", "--allow-read", "--allow-write", "--allow-run", "--allow-env", "index.ts"]
-

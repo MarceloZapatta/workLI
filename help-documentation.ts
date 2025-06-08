@@ -7,8 +7,9 @@ export async function helpDocumentation() {
   console.log(brightYellow('help'));
   console.log(` ${green('help')} shows this worKLI helper`);
   console.log(brightYellow('make'));
-  console.log(` ${green('make:enviroment')} creates a new enviroment`);
+  console.log(` ${green('make')} assistent for creating a new project`);
   console.log(` ${green('make:project')} creates a new project`);
+  console.log(` ${green('make:enviroment')} creates a new enviroment`);
   console.log(brightYellow('enviroment'));
   console.log(` ${green('enviroment:activate')} set default enviroment`);
 }

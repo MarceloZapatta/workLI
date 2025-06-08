@@ -1,9 +1,9 @@
 import { green } from 'https://deno.land/std@0.205.0/fmt/colors.ts';
-import { currentEnviroment, helpDocumentation } from './help-documentation.ts';
+import { currentEnviroment, helpDocumentation } from '../help-documentation.ts';
 import EnviromentService from './services/enviroment-service.ts';
 import EnviromentNotFound from './exceptions/enviroment-not-found.ts';
 import ProjectService from './services/project-service.ts';
-import AutomatorService from "./services/automator-service.ts";
+import AutomatorService from './services/automator-service.ts';
 
 export default class App {
   enviromentService: EnviromentService;
@@ -31,9 +31,12 @@ export default class App {
 
     try {
       switch (arg) {
+        case 'make':
+          await this.automatorService.index();
+          break;
         case 'run':
         case 'project:run':
-          await this.projectService.run(args[1]);
+          this.projectService.run(args[1]);
           break;
         case 'make:enviroment':
           await this.enviromentService.createNewEnviroment(args[1]);
@@ -44,8 +47,8 @@ export default class App {
         case 'enviroment:activate':
           await this.enviromentService.setCurrentEnviroment(args[1]);
           break;
-        case 'automator:test':
-          await this.automatorService.index();
+        case 'help':
+          this.showHelpDocs();
           break;
         default:
           this.showCommandNotFound(arg);

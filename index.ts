@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import App from "./app.ts";
+import App from "./src/app.ts";
 
 const app = new App();
 

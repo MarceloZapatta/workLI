@@ -12,11 +12,11 @@ docker build -t workli .
 To run the application you can use:
 
 ```bash
-docker run -i workli deno task start
+docker exec -it workli deno task start
 ```
 
 To build the application you can use:
 
 ```bash
-docker run -i workli deno task build
+docker exec -it workli deno task build
 ```

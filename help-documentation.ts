@@ -16,6 +16,10 @@ export async function helpDocumentation() {
   console.log(` ${green('make:environment')} creates a new environment`);
   console.log(brightYellow('environment'));
   console.log(` ${green('environment:activate')} set default environment`);
+  console.log(` ${green('environment:list')} list all environments`);
+  console.log(brightYellow('project'));
+  console.log(` ${green('project:list')} list all projects`);
+  console.log(` ${green('project:run')} run a project`);
 }
 
 async function getCurrentVersion() {

@@ -47,12 +47,15 @@ export default class App {
         case 'make:project':
           await this.projectService.createNewProject(args[1]);
           break;
+        case 'env:activate':
         case 'environment:activate':
           await this.environmentService.setCurrentEnvironment(args[1]);
           break;
+        case 'env:list':
         case 'environment:list':
           await this.environmentService.listEnvironments();
           break;
+        case 'proj:list':
         case 'project:list':
           await this.projectService.listProjects();
           break;

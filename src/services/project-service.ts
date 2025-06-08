@@ -58,8 +58,6 @@ export default class ProjectService {
   run(name: string) {
     const filePath = `./environments/${this.environmentService.getCurrentEnvironment()}/${name}/run.sh`;
 
-    console.log('to aqqq');
-
     const command = new Deno.Command('bash', {
       args: [filePath],
     });

@@ -1,17 +1,20 @@
 import { green } from 'https://deno.land/std@0.205.0/fmt/colors.ts';
-import { currentEnviroment, helpDocumentation } from '../help-documentation.ts';
-import EnviromentService from './services/enviroment-service.ts';
-import EnviromentNotFound from './exceptions/enviroment-not-found.ts';
+import {
+  currentEnvironment,
+  helpDocumentation,
+} from '../help-documentation.ts';
+import EnvironmentService from './services/environment-service.ts';
+import EnvironmentNotFound from './exceptions/environment-not-found.ts';
 import ProjectService from './services/project-service.ts';
 import AutomatorService from './services/automator-service.ts';
 
 export default class App {
-  enviromentService: EnviromentService;
+  environmentService: EnvironmentService;
   projectService: ProjectService;
   automatorService: AutomatorService;
 
   constructor() {
-    this.enviromentService = new EnviromentService();
+    this.environmentService = new EnvironmentService();
     this.projectService = new ProjectService();
     this.automatorService = new AutomatorService();
   }
@@ -21,7 +24,7 @@ export default class App {
   }
 
   showCurrentEviroment() {
-    currentEnviroment();
+    currentEnvironment();
   }
 
   async processArg(args: string[]) {
@@ -38,14 +41,20 @@ export default class App {
         case 'project:run':
           this.projectService.run(args[1]);
           break;
-        case 'make:enviroment':
-          await this.enviromentService.createNewEnviroment(args[1]);
+        case 'make:environment':
+          await this.environmentService.createNewEnvironment(args[1]);
           break;
         case 'make:project':
           await this.projectService.createNewProject(args[1]);
           break;
-        case 'enviroment:activate':
-          await this.enviromentService.setCurrentEnviroment(args[1]);
+        case 'environment:activate':
+          await this.environmentService.setCurrentEnvironment(args[1]);
+          break;
+        case 'environment:list':
+          await this.environmentService.listEnvironments();
+          break;
+        case 'project:list':
+          await this.projectService.listProjects();
           break;
         case 'help':
           this.showHelpDocs();
@@ -55,8 +64,8 @@ export default class App {
           break;
       }
     } catch (error) {
-      if (error instanceof EnviromentNotFound) {
-        console.error('No enviroment is active.');
+      if (error instanceof EnvironmentNotFound) {
+        console.error('No environment is active.');
         return Deno.exit(0);
       }
 

@@ -3,14 +3,14 @@ import { Select } from 'https://deno.land/x/cliffy@v1.0.0-rc.4/prompt/mod.ts';
 import { fileExists } from '../helpers/helpers.ts';
 import { ProjectType } from '../interfaces/project-type.ts';
 import AutomatorFactory from './automator/automator-factory.ts';
-import EnviromentService from './enviroment-service.ts';
-import type _EnviromentNotFound from '../exceptions/enviroment-not-found.ts';
+import EnvironmentService from './environment-service.ts';
+import type _EnvironmentNotFound from '../exceptions/environment-not-found.ts';
 
 export default class AutomatorService {
-  enviromentService: EnviromentService;
+  environmentService: EnvironmentService;
 
   constructor() {
-    this.enviromentService = new EnviromentService();
+    this.environmentService = new EnvironmentService();
   }
 
   public async index() {
@@ -25,16 +25,16 @@ export default class AutomatorService {
   }
 
   /**
-   * Creates a new enviroment if it does not exists
+   * Creates a new environment if it does not exists
    *
    * @returns void
    */
-  public createEnviroment() {
+  public createEnvironment() {
     try {
-      return this.enviromentService.getCurrentEnviroment();
-    } catch (_EnviromentNotFound) {
-      const enviromentDefaultName = 'default';
-      this.enviromentService.createNewEnviroment(enviromentDefaultName);
+      return this.environmentService.getCurrentEnvironment();
+    } catch (_EnvironmentNotFound) {
+      const environmentDefaultName = 'default';
+      this.environmentService.createNewEnvironment(environmentDefaultName);
     }
   }
 
